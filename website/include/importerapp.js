@@ -73,7 +73,7 @@ ImporterApp.prototype.WelcomeDialog = function ()
 		'</div>',
 	].join ('');
 	this.dialog.Open ({
-		title : 'Welcome',
+		title : 'Bienvenidos',
 		text : dialogText,
 		buttons : [
 			{
@@ -173,9 +173,9 @@ ImporterApp.prototype.GenerateMenu = function ()
 			}
 		}
 	
-		infoTable.AddRow ('Contar Material', materialCount);	
-		infoTable.AddRow ('Contar Vértice', vertexCount);	
-		infoTable.AddRow ('Contar Triángulo', triangleCount);	
+		infoTable.AddRow ('Materiales', materialCount);	
+		infoTable.AddRow ('Vértices', vertexCount);	
+		infoTable.AddRow ('Triángulos', triangleCount);	
 	}
 	
 	function AddMaterial (importerMenu, materialsGroup, material)
@@ -265,16 +265,16 @@ ImporterApp.prototype.GenerateMenu = function ()
 	}
 	
 	if (this.fileNames.missing.length > 0) {
-		var missingFilesGroup = AddDefaultGroup (importerMenu, 'Missing Files');
+		var missingFilesGroup = AddDefaultGroup (importerMenu, 'Archivos faltantes');
 		for (i = 0; i < this.fileNames.missing.length; i++) {
 			importerMenu.AddSubItem (missingFilesGroup, this.fileNames.missing[i]);
 		}
 	}
 	
-	var infoGroup = AddDefaultGroup (importerMenu, 'Information');
+	var infoGroup = AddDefaultGroup (importerMenu, 'Información');
 	AddInformation (infoGroup, jsonData);
 	
-	var materialsGroup = AddDefaultGroup (importerMenu, 'Materials');
+	var materialsGroup = AddDefaultGroup (importerMenu, 'Materiales');
 	var material;
 	for (i = 0; i < jsonData.materials.length; i++) {
 		material = jsonData.materials[i];
