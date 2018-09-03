@@ -89,10 +89,10 @@ ImporterApp.prototype.WelcomeDialog = function ()
 ImporterApp.prototype.GetWelcomeText = function ()
 {
 	var welcomeText = [
-		'<div class="welcometitle">Welcome to Online 3D Viewer!</div>',
-		'<div class="welcometext">Here you can view your local 3D models online. You have three ways to open a file. Use the open button above to select files, simply drag and drop files to this browser window, or define the url of the files as location hash.</div>',
-		'<div class="welcometextformats">Supported formats: 3ds, obj, stl.</div>',
-		'<div class="welcometext">Powered by <a target="_blank" href="https://github.com/mrdoob/three.js/">Three.js</a> and <a target="_blank" href="https://github.com/kovacsv/JSModeler">JSModeler</a>.</div>',
+		'<div class="welcometitle">¡Bienvenidos al Visor 3D en línea!</div>',
+		'<div class="welcometext">Acá pueden visualizar sus modelos 3D locales en línea. Los archivos pueden abrirse de tres maneras diferentes: Usando el botón "abrir" ubicado arriba a la izquierda (el del ícono de la carpetita); simplemente arrastrando y soltando un archivo en esta ventana; o escribiendo la URL del archivo.</div>',
+		'<div class="welcometextformats">Formatos soportados: 3ds, obj, stl.</div>',
+		'<div class="welcometext">Hecho con <a target="_blank" href="https://github.com/mrdoob/three.js/">Three.js</a> y <a target="_blank" href="https://github.com/kovacsv/JSModeler">JSModeler</a>.</div>',
 		'<div class="welcometext"><a target="_blank" href="https://github.com/kovacsv/Online3DViewer"><img src="images/githublogo.png"/></a></div>',
 	].join ('');
 	return welcomeText;
@@ -193,7 +193,7 @@ ImporterApp.prototype.GenerateMenu = function ()
 					table.AddRow ('Shininess', material.shininess.toFixed (2));
 					table.AddRow ('Opacity', material.opacity.toFixed (2));
 				},
-				title : 'Show/Hide Information',
+				title : 'Mostrar/ocultar información',
 				userData : material
 			}
 		});
@@ -235,7 +235,7 @@ ImporterApp.prototype.GenerateMenu = function ()
 					table.AddRow ('Vertex count', mesh.vertices.length / 3);
 					table.AddRow ('Triangle count', triangleCount);
 				},
-				title : 'Show/Hide Information',
+				title : 'Mostrar/ocultar información',
 				userData : mesh
 			},
 			userButton : {
@@ -247,7 +247,7 @@ ImporterApp.prototype.GenerateMenu = function ()
 					var visible = importerApp.ShowHideMesh (meshIndex);
 					image.src = visible ? 'images/visible.png' : 'images/hidden.png';
 				},
-				title : 'Show/Hide Mesh',
+				title : 'Mostrar/Ocultar Mesh',
 				userData : meshIndex
 			}
 		});
@@ -338,7 +338,7 @@ ImporterApp.prototype.Generate = function (progressBar)
 
 	var jsonData = this.viewer.GetJsonData ();
 	if (jsonData.materials.length === 0 || jsonData.meshes.length === 0) {
-		this.GenerateError ('Failed to open file. Maybe something is wrong with your file.');
+		this.GenerateError ('Se produjo un error al intentar abrir el archivo. Quizás sea un problema con el archivo de imagen.');
 		return;
 	}
 	
@@ -346,10 +346,10 @@ ImporterApp.prototype.Generate = function (progressBar)
 	if (jsonData.meshes.length > 250) {
 		this.dialog.Open ({
 			title : 'Information',
-			text : '<div class="importerdialog">The model contains a large number of meshes. It can cause performance problems. Would you like to merge meshes?</div>',
+			text : '<div class="importerdialog">El modelo contiene una gran cantidad de meshes. Esto puede causar problemas en la performance. ¿Desearía fusionar las meshes?</div>',
 			buttons : [
 				{
-					text : 'yes',
+					text : 'sí',
 					callback : function (dialog) {
 						ShowMeshes (myThis, progressBar, true);
 						dialog.Close ();
@@ -432,7 +432,7 @@ ImporterApp.prototype.ProcessFiles = function (fileList, isUrl)
 	
 	processorFunc (userFiles, {
 		onError : function () {
-			myThis.GenerateError ('No readable file found. You can open 3ds, obj and stl files.');
+			myThis.GenerateError ('No se encontró ningún archivo legible. Se pueden abrir solamente archivos 3ds, obj y stl.');
 			return;
 		},
 		onReady : function (fileNames, jsonData) {
