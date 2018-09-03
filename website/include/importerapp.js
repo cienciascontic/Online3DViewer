@@ -29,7 +29,7 @@ ImporterApp.prototype.Init = function ()
 	var myThis = this;
 	var top = document.getElementById ('top');
 	var importerButtons = new ImporterButtons (top);
-	importerButtons.AddLogo ('Online 3D Viewer <span class="version">v 0.5</span>', function () { myThis.WelcomeDialog (); });
+	importerButtons.AddLogo ('Visor 3D online <span class="version">v 0.5</span>', function () { myThis.WelcomeDialog (); });
 	importerButtons.AddButton ('images/openfile.png', 'Abrir archivo', function () { myThis.OpenFile (); });
 	importerButtons.AddButton ('images/fitinwindow.png', 'Adaptar a la ventana', function () { myThis.FitInWindow (); });
 	importerButtons.AddButton ('images/fixup.png', 'Habilitar/Deshabilitar Fijación de Vector', function () { myThis.SetFixUp (); });
@@ -257,7 +257,7 @@ ImporterApp.prototype.GenerateMenu = function ()
 	var menu = document.getElementById ('menu');
 	var importerMenu = new ImporterMenu (menu);
 
-	var filesGroup = AddDefaultGroup (importerMenu, 'Files');
+	var filesGroup = AddDefaultGroup (importerMenu, 'Archivos');
 	importerMenu.AddSubItem (filesGroup, this.fileNames.main);
 	var i;
 	for (i = 0; i < this.fileNames.requested.length; i++) {
