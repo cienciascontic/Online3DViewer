@@ -18,7 +18,7 @@ ImporterApp.prototype.Init = function ()
 		div.innerHTML = [
 			'<div id="nosupport">',
 			this.GetWelcomeText (),
-			'<div class="nosupporterror">You need a browser which supports the following technologies: WebGL, WebGLRenderingContext, File, FileReader, FileList, Blob, URL.</div>',
+			'<div class="nosupporterror">Se necesita un navegador que soporte las siguientes tecnologías: WebGL, WebGLRenderingContext, File, FileReader, FileList, Blob, URL.</div>',
 			'</div>'
 		].join ('');
 		document.body.appendChild (div);
@@ -30,15 +30,15 @@ ImporterApp.prototype.Init = function ()
 	var top = document.getElementById ('top');
 	var importerButtons = new ImporterButtons (top);
 	importerButtons.AddLogo ('Online 3D Viewer <span class="version">v 0.5</span>', function () { myThis.WelcomeDialog (); });
-	importerButtons.AddButton ('images/openfile.png', 'Open File', function () { myThis.OpenFile (); });
-	importerButtons.AddButton ('images/fitinwindow.png', 'Fit In Window', function () { myThis.FitInWindow (); });
-	importerButtons.AddButton ('images/fixup.png', 'Enable/Disable Fixed Up Vector', function () { myThis.SetFixUp (); });
-	importerButtons.AddButton ('images/top.png', 'Set Up Vector (Z)', function () { myThis.SetNamedView ('z'); });
-	importerButtons.AddButton ('images/bottom.png', 'Set Up Vector (-Z)', function () { myThis.SetNamedView ('-z'); });
-	importerButtons.AddButton ('images/front.png', 'Set Up Vector (Y)', function () { myThis.SetNamedView ('y'); });
-	importerButtons.AddButton ('images/back.png', 'Set Up Vector (-Y)', function () { myThis.SetNamedView ('-y'); });
-	importerButtons.AddButton ('images/left.png', 'Set Up Vector (X)', function () { myThis.SetNamedView ('x'); });
-	importerButtons.AddButton ('images/right.png', 'Set Up Vector (-X)', function () { myThis.SetNamedView ('-x'); });
+	importerButtons.AddButton ('images/openfile.png', 'Abrir archivo', function () { myThis.OpenFile (); });
+	importerButtons.AddButton ('images/fitinwindow.png', 'Adaptar a la ventana', function () { myThis.FitInWindow (); });
+	importerButtons.AddButton ('images/fixup.png', 'Habilitar/Deshabilitar Fijación de Vector', function () { myThis.SetFixUp (); });
+	importerButtons.AddButton ('images/top.png', 'Configurar Vector (Z)', function () { myThis.SetNamedView ('z'); });
+	importerButtons.AddButton ('images/bottom.png', 'Configurar Vector (-Z)', function () { myThis.SetNamedView ('-z'); });
+	importerButtons.AddButton ('images/front.png', 'Configurar Vector (Y)', function () { myThis.SetNamedView ('y'); });
+	importerButtons.AddButton ('images/back.png', 'Configurar Vector (-Y)', function () { myThis.SetNamedView ('-y'); });
+	importerButtons.AddButton ('images/left.png', 'Configurar Vector (X)', function () { myThis.SetNamedView ('x'); });
+	importerButtons.AddButton ('images/right.png', 'Configurar Vector (-X)', function () { myThis.SetNamedView ('-x'); });
 	
 	this.dialog = new FloatingDialog ();
 
@@ -149,7 +149,7 @@ ImporterApp.prototype.GenerateMenu = function ()
 				visible : false,
 				open : 'images/opened.png',
 				close : 'images/closed.png',
-				title : 'Show/Hide ' + name
+				title : 'Mostrar/Ocultar ' + name
 			}
 		});
 		return group;
@@ -173,9 +173,9 @@ ImporterApp.prototype.GenerateMenu = function ()
 			}
 		}
 	
-		infoTable.AddRow ('Material count', materialCount);	
-		infoTable.AddRow ('Vertex count', vertexCount);	
-		infoTable.AddRow ('Triangle count', triangleCount);	
+		infoTable.AddRow ('Contar Material', materialCount);	
+		infoTable.AddRow ('Contar Vértice', vertexCount);	
+		infoTable.AddRow ('Contar Triángulo', triangleCount);	
 	}
 	
 	function AddMaterial (importerMenu, materialsGroup, material)
@@ -187,11 +187,11 @@ ImporterApp.prototype.GenerateMenu = function ()
 				close : 'images/info.png',
 				onOpen : function (content, material) {
 					var table = new InfoTable (content);
-					table.AddColorRow ('Ambient', material.ambient);
-					table.AddColorRow ('Diffuse', material.diffuse);
-					table.AddColorRow ('Specular', material.specular);
-					table.AddRow ('Shininess', material.shininess.toFixed (2));
-					table.AddRow ('Opacity', material.opacity.toFixed (2));
+					table.AddColorRow ('Ambiente', material.ambient);
+					table.AddColorRow ('Difuso', material.diffuse);
+					table.AddColorRow ('Especular', material.specular);
+					table.AddRow ('Brillo', material.shininess.toFixed (2));
+					table.AddRow ('Opacidad', material.opacity.toFixed (2));
 				},
 				title : 'Mostrar/ocultar información',
 				userData : material
